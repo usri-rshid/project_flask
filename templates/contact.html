@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ui segment">
+    <div class="ui two column very relaxed grid">
+        <div class="column">
+            <form class="ui fluid form">
+                <div class="field">
+                    <input type="text" placeholder="Full name">
+                    <div class="ui pointing red basic label">
+                        Please enter your Full name
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                <div class="field" placeholder="Email">
+                    <div class="ui pointing below red basic label">
+                        Please enter your email
+                    </div>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="ui divider"></div>
+                <div class="inline field">
+                    <input type="text" placeholder="Object">
+                    <div class="ui left pointing red basic label">
+                        object
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                <div class="inline field">
+                    <textarea class="form-control" aria-label="With textarea" placeholder="your message"></textarea>
+                    <div class="ui top pointing red basic label">
+                        your message
+                    </div>
+                </div>
+                <button class="fluid grey circular ui icon button">
+                    <i class="envelope icon"></i>
+                </button>
+            </form>
+        </div>
+        <div class="column center aligned">
+
+            <img src="https://cdn.pixabay.com/photo/2015/11/03/08/58/meeting-1019875_1280.jpg"
+                class="ui fluid rounded image ">
+            <h1 class="ui hug header grey">Get In Touch</h1>
+        </div>
+    </div>
+    <div class="ui vertical divider"><i class="arrow  right icon"></i></div>
+</div>
+
+
+{% endblock %}

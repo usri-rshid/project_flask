@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Hello to Password Regenerator</h1>
+<div class="container-fluid">
+    <form action="/generate_password" method="POST">
+        <div class="ui form">
+            <div class="ui slider checkbox  m-3">
+                <input type="checkbox" name="upper_letter" value="yes">
+                <label for="upperLetter">Include uppercase letters:</label>
+            </div><br>
+            <div class="ui slider checkbox  m-3">
+                <input type="checkbox" name="numbers" value="yes">
+                <label for="numbers">Include numbers:</label>
+            </div><br>
+            <div class="ui slider checkbox   m-3">
+                <input type="checkbox" name="punctuation" value="yes">
+                <label for="punctuation">Include special characters:</label>
+            </div><br>
+            <div class="field required input focus  m-3">
+                <label for="length">Password length:</label>
+                <br><input type="number" name="length" value="" required><br>
+            </div><br>
+            <input class="positive ui button m-3" type="submit" value="Generate Password">
+        </div>
+    </form>
+    {% if error %}
+    <div class="ui error message">
+        <p>{{ error }}</p>
+    </div>
+    {% else %}
+    {% if password %}
+    <div class="ui success message">
+        <h1 class="header">Generated Password:</h1>
+        <p>{{ password }}</p>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

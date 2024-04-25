@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Blog </a>
+        <form class="d-flex" action="/blog" method="POST">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button class="btn btn-outline-success" type="submit" value="Search">Search</button>
+        </form>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card mt-4">
+                    <div class="card-body">
+
+                        <!-- <a class="btn btn-success" href="/create">Add post</a> -->
+
+                        {% if message %}
+                        <div class="alert alert-warning alert-dismissible fade show m-2" role="alert">
+                            <p>{{ message }}</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                                onclick="redirectToBlog()"></button>
+                        </div>
+                        {% else %}
+                        {% for post in posts %}
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col"><strong>{{post[1]}}</strong></div>
+                                    <!-- <div class="col text-right">
+                                        <a class="btn btn-primary"
+                                            href="/editing?title={{post[1]}}&post={{post[2]}}&_id={{post[0]}}">Update</a>
+                                        <a class="btn btn-danger" href="/deleting/{{post[0]}}">Delete</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                {{post[2][0:500]}}
+                                <a href="/post/{{post[0]}}">... show more</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function redirectToBlog() {
+        window.location.href = '/blog';
+    }
+</script>
+{% endblock %}

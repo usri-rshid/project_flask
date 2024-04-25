@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid ">
+
+
+    <h2 class="ui center aligned icon header">
+        <i class="circular users icon"></i>
+        login
+    </h2>
+    <form class="ui form" method="POST" action="/login">
+        <div class="field">
+            <label class="ui medium header">Username</label>
+            <input type="text" id="username" name="username" placeholder="username" required>
+        </div>
+        <div class="field">
+            <label class="ui medium header">Password</label>
+            <input type="password" id="password" name="password" placeholder="password" required>
+        </div>
+
+        <button class="positive ui button" type="submit" value="Login">Submit</button>
+    </form>
+</div>
+{% endblock %}

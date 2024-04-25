@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    #dice {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #dice button {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: none;
+        background-color: hsla(210, 100%, 50%, 0.8);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #dice button:hover {
+        background-color: hsla(210, 100%, 60%, 1);
+    }
+
+    #dice button:active {
+        background-color: hsla(210, 100%, 70%, 0.8);
+    }
+
+    #dice input {
+        font-size: 2rem;
+        width: 150px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #diceResult {
+        margin: 25px;
+    }
+
+    #diceImages img {
+        width: 150px;
+        margin: 25px;
+
+        -webkit-animation: spin 10s linear infinite;
+        -moz-animation: spin 10s linear infinite;
+        animation: spin 10s linear infinite;
+    }
+
+    @-moz-keyframes spin {
+        100% {
+            -moz-transform: rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin {
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<div id="dice" class="container ">
+    <h1>Dice Roller</h1>
+    <label># of dice:</label>
+    <div class="ui input">
+        <input type="number" id="numOfDice" value="1" min="1">
+    </div>
+    <button class="ui primary button" onclick="rollDice()"><i class="sync spinner icon"></i>Roll
+        Dice</button>
+    <div class="ui violet" id="diceResult"></div>
+    <div id="diceImages"></div>
+</div>
+
+<script>
+    // DICE ROLLER PROGRAM
+
+    function rollDice() {
+
+        const numOfDice = document.getElementById("numOfDice").value;
+        const diceResult = document.getElementById("diceResult");
+        const diceImages = document.getElementById("diceImages");
+        const values = [];
+        const images = [];
+
+        for (let i = 0; i < numOfDice; i++) {
+            const value = Math.floor(Math.random() * 6) + 1;
+            values.push(value);
+            images.push(`<img src="static/dices/Alea_${value}.png" alt="Dice ${value}">`);
+        }
+
+        diceResult.textContent = `dice: ${values.join(', ')}`;
+        diceImages.innerHTML = images.join('');
+    }
+
+</script>
+
+
+{% endblock %}

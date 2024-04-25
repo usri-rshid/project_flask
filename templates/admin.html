@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+
+        <h3 class="ui left floated header"><a class="ui huge header navbar-brand">Blog</a></h3>
+        <h3 class="ui right floated header">
+            <button class="mini ui red button">
+                <i class="user icon"></i>
+                <a class="btn  link-light " href=" /logout">Logout</a>
+            </button>
+        </h3>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Admin Page</h1>
+
+                <h3>Create New Post</h3>
+                <form action="/inserting" method="GET">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control"><br>
+                    <label for="post">Post:</label>
+                    <textarea id="post" name="post" class="form-control" rows="10"></textarea><br>
+                    <input type="submit" class="btn btn-success btn-lg" value="Create Post" class="form-control">
+                </form>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h2>Modify or Delete Posts</h2>
+                        {% for post in posts %}
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col"><strong>{{ post[1] }}</strong></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>{{ post[2] }}</p>
+
+                                <form action="/updating/{{ post[0] }}" method="GET">
+                                    <input type="hidden" name="_id" value="{{ post[0] }}" class="form-control">
+                                    <label for="title">Title:</label>
+                                    <input type="text" id="title" name="title" value="{{ post[1] }}"
+                                        class="form-control"><br>
+                                    <label for="post">Post:</label>
+                                    <textarea id="post" name="post" class="form-control"
+                                        rows="10">{{ post[2] }}</textarea><br>
+                                    <input type="submit" class="btn btn-primary m-1 " value="Update Post">
+                                </form>
+                                <form action="/deleting/{{ post[0] }}" method="GET">
+                                    <input type="hidden" name="_id" value="{{ post[0] }}" class="form-control">
+                                    <input type="submit" class="btn btn-danger m-1 " value="Delete Post"
+                                        class="form-control">
+                                </form>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

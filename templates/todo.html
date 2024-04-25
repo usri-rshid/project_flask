@@ -1,0 +1,68 @@
+<style>
+
+</style>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="ui header center aligned my-5">App Todo List</h2>
+<form class=" ui form form-group mr-3 mb-1" action="/add" , method="POST">
+
+    <div class="field app-container d-flex align-items-center justify-content-center flex-column">
+        <label class="ui massive purple label " for="title"><i class="calendar check icon"></i>Todo Title</label>
+        <div class="ui input">
+            <input type="text" class="form-control m-3" name="title" placeholder="Enter your Todo ....">
+        </div>
+        <button type="submit" class="ui black  button mr-3"><i class="plus icon"></i>ADD</button>
+    </div>
+
+</form>
+{% for todo in todo_list %}
+<div class="ui small aligned divided list">
+    <div class="ui small cards">
+        <div class="card">
+            <div class="content">
+                <div class="header">
+                    <h1 class="ui header">{{ todo.id }} </h1>
+                </div>
+                <div class="description">
+                    <h2>{{ todo.title }}</h2>
+                </div>
+                {%if todo.complete == False %}
+                <div class="meta">
+                    <div class="ui icon message">
+                        <i class="notched circle loading icon"></i>
+                        <div class="content">
+                            <div class="header">
+                                Not complete
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%else %}
+                <div class="meta">
+                    <div class="ui icon message">
+                        <i class="check icon"></i>
+                        <div class="content">
+                            <div class="header">
+                                completed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endif%}
+                <div class="extra content">
+                    <div class="ui two buttons">
+                        <div class="ui large buttons"></div>
+                        <button class="positive ui button"><i class="cut icon"></i><a class="ui header"
+                                href="/update/{{ todo.id }}">update</a></button>
+                        <button class="negative ui button"><i class="edit icon"></i><a class="ui header"
+                                href="/delete/{{ todo.id }}">delete</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor%}
+{% endblock %}
