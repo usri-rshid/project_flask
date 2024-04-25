@@ -139,11 +139,6 @@ def blog():
     return render_template('blog.html', posts=data, search_query=search_query, message=message)
 
 
-
-
-
-
-
 @app.route('/post/<_id>')
 def post(_id):
     # Check if the user is logged in
@@ -236,11 +231,6 @@ def deleting(_id):
     # Close db connection
     db.close()
     return redirect('/admin')
-
-
-
-
-
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
@@ -338,7 +328,9 @@ def landing():
 def dayNight():
     return redirect("https://usri-rshid.github.io/day_light/")
 
-
+@app.route('/portfolio0')
+def portfolio0():
+    return redirect("https://usri-rshid.github.io/portfolio/")
 
 if __name__ == "__main__":
     db.create_all()

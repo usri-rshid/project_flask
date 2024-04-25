@@ -17,6 +17,7 @@
 * html/css
 * sqllite
 * flask
+* bootstrap
 
 
 ### ressources:
