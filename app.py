@@ -332,6 +332,10 @@ def dayNight():
 def portfolio0():
     return redirect("https://usri-rshid.github.io/portfolio/")
 
+@app.route('/quotesApi')
+def quotesApi():
+    return redirect("https://usri-rshid.github.io/quotes_api/")
+
 if __name__ == "__main__":
     db.create_all()
     # to add todo list for testing html
