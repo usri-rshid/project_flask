@@ -336,6 +336,10 @@ def portfolio0():
 def quotesApi():
     return redirect("https://usri-rshid.github.io/quotes_api/")
 
+@app.route('/landing1')
+def landing():
+    return redirect("https://usri-rshid.github.io/landing_page1/")
+
 if __name__ == "__main__":
     db.create_all()
     # to add todo list for testing html
