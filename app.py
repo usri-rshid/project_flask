@@ -337,7 +337,7 @@ def quotesApi():
     return redirect("https://usri-rshid.github.io/quotes_api/")
 
 @app.route('/landing1')
-def landing():
+def landing1():
     return redirect("https://usri-rshid.github.io/landing_page1/")
 
 if __name__ == "__main__":
